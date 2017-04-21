@@ -174,7 +174,7 @@ bool SerializeLoad(_Tp& obj, const std::string& fileName, uint32_t* pVersion=NUL
 	stream.read(szHeader, 4);
 	if (!stream)
 		return false;
-	if (_tcsncmp(szHeader, MVSI_PROJECT_ID, 4) != 0) {
+	if (strncmp(szHeader, MVSI_PROJECT_ID, 4) != 0) {
 		// try to load as the first version that didn't have a header
 		if (Util::getFileExt(fileName).ToLower() != _T(".mvs"))
 			return false;
